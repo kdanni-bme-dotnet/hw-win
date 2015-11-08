@@ -9,7 +9,7 @@
     <ProjectGuid>{8BEC2DDA-B800-45D8-B9E4-A0155B9DEDF9}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>DatagramService</RootNamespace>
+    <RootNamespace>V37ZEN.DatagramService</RootNamespace>
     <AssemblyName>DatagramService</AssemblyName>
     <ProjectTypeGuids>{3D9AD99F-2412-4246-B90B-4EAA41C64699};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <StartArguments>/client:"WcfTestClient.exe"</StartArguments>
@@ -47,10 +47,16 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Datagram.cs" />
+    <Compile Include="EchoDatagramService.cs" />
+    <Compile Include="IDatagramService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_config_generated.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="_Appconfig_.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
