@@ -11,14 +11,32 @@ namespace DebugHost
     {
         static void Main(string[] args)
         {
-            var d = new Datagram()
+            #region datagram_toString_test
+            var d = new Datagram
             {
                 Message = "Hali!",
                 Timestamp = DateTime.UtcNow,
-                Metadata = { { "a", "b" }, { "LEVEL", "Debug" } }
+                Metadata = new Dictionary<string,string>
+                {
+                    { "a", "b" },
+                    { "LEVEL", "Debug" }
+                }
             };
 
             Console.WriteLine(d.ToString());
+
+            var d2 = new Datagram
+            {
+                Message = "Hali!",
+                Timestamp = DateTime.UtcNow
+            };
+            Console.WriteLine();
+            #endregion
+
+
+
+
+            Console.WriteLine(d2.ToString());
             Console.ReadKey();
         }
     }

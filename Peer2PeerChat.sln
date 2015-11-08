@@ -7,6 +7,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DatagramService", "Datagram
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DebugHost", "DebugHost\DebugHost.csproj", "{D5F9AD1A-B7C5-4A0C-B2D4-C25C518B6FE3}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Notes", "Notes", "{B7AAA4B1-9960-4BCC-8477-136DEBBF3F8C}"
+	ProjectSection(SolutionItems) = preProject
+		App.configs.txt = App.configs.txt
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

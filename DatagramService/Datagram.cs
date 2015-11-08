@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Runtime.Serialization;
+using System.Text;
 
 namespace V37ZEN.DatagramService
 {
@@ -28,8 +29,23 @@ namespace V37ZEN.DatagramService
 
         public override string ToString()
         {
-            return string.Format("Datagram: [Message={0}, Timestamp={1}, Metadata={2}]"
-                , this.Message, this.Timestamp, this.Metadata.ToString());
+
+            if(this.Metadata != null && this.Metadata.Count > 0)
+            { 
+                StringBuilder str = new StringBuilder();
+                str.AppendFormat("Datagram: [ Message = {0}, Timestamp = {1}, ", this.Message, this.Timestamp);
+                str.Append("Metadata =[ ");
+                foreach (var item in this.Metadata)
+                {
+                    str.AppendFormat("{0} = '{1}' ", item.Key, item.Value);
+                }
+                str.Append("]]");
+                return str.ToString();
+            }
+            else{
+                return string.Format("Datagram: [ Message = {0}, Timestamp = {1} ]"
+                    , this.Message, this.Timestamp);
+            }
         }
     }
 }
