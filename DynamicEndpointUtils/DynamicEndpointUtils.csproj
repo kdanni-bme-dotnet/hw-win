@@ -39,6 +39,7 @@
     <Compile Include="Debug\DebugServiceHost.cs" />
     <Compile Include="ExtensionMethodes\DisposeCommunicationObject.cs" />
     <Compile Include="ExtensionMethodes\BehaviorUtil.cs" />
+    <Compile Include="ExtensionMethodes\ServiceHostUtil.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -36,7 +36,8 @@ namespace V37ZEN.DatagramService.Host
 
         public void Close()
         {
-            Host.Close();
+            if(Host != null && CommunicationState.Opened.Equals(Host.State))
+                Host.Close();
         }
 
         public ServiceMetadataBehavior GetServiceMetadataBehavior()

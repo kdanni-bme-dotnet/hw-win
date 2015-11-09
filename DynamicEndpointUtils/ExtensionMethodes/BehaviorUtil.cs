@@ -10,7 +10,7 @@ namespace V37ZEN.DynamicEndpointUtils
         public static ServiceMetadataBehavior GetServiceMetadataBehavior(this Uri uri)
         {
             ServiceMetadataBehavior smb = new ServiceMetadataBehavior();
-            if (Uri.UriSchemeHttps.Equals(uri.Scheme))
+            if ("https".Equals(uri.Scheme))
             {
                 smb.HttpsGetEnabled = true;
                 smb.HttpsGetUrl = uri;

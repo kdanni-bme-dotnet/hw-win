@@ -35,7 +35,7 @@ namespace DebugHost
             Console.WriteLine(d2.ToString());
             #endregion
 
-            using (var host = new DatagramServiceMexHost(new Uri("http://localhost:8085/datagram")))
+            using (var host = new DatagramServiceMexHost(new Uri("http://localhost:8085/test")))
             {
                 host.Open();
                 Console.WriteLine("Datagram Service is ready.");
@@ -44,7 +44,7 @@ namespace DebugHost
                 Console.ReadLine();
 
 
-                host.ChangeAddress(new Uri("http://localhost:8085/test"));
+                host.ChangeAddress(new Uri("http://localhost:8085/datagram"));
                 Console.WriteLine("Datagram Service is rehosted.");
                 Console.WriteLine(host.Address);
 
