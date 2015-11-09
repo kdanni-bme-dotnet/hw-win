@@ -14,6 +14,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Notes", "Notes", "{B7AAA4B1
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DynamicEndpointUtils", "DynamicEndpointUtils\DynamicEndpointUtils.csproj", "{3075BAFE-7292-4F90-9612-932CC98E3AF3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DebugClient", "DebugClient\DebugClient.csproj", "{24D3619A-9E97-4A1A-954E-FE2A2E127207}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -32,11 +34,12 @@ Global
 		{3075BAFE-7292-4F90-9612-932CC98E3AF3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3075BAFE-7292-4F90-9612-932CC98E3AF3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3075BAFE-7292-4F90-9612-932CC98E3AF3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{24D3619A-9E97-4A1A-954E-FE2A2E127207}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{24D3619A-9E97-4A1A-954E-FE2A2E127207}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{24D3619A-9E97-4A1A-954E-FE2A2E127207}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{24D3619A-9E97-4A1A-954E-FE2A2E127207}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(NestedProjects) = preSolution
-		{3075BAFE-7292-4F90-9612-932CC98E3AF3} = {B7AAA4B1-9960-4BCC-8477-136DEBBF3F8C}
 	EndGlobalSection
 EndGlobal

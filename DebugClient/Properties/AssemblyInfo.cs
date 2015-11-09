@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("V37ZENDynamicEndpointUtils")]
+[assembly: AssemblyTitle("DebugClient")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("V37ZENDynamicEndpointUtils")]
+[assembly: AssemblyProduct("DebugClient")]
 [assembly: AssemblyCopyright("Copyright ©  2015")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("3075bafe-7292-4f90-9612-932cc98e3af3")]
+[assembly: Guid("24d3619a-9e97-4a1a-954e-fe2a2e127207")]
 
 // Version information for an assembly consists of the following four values:
 //

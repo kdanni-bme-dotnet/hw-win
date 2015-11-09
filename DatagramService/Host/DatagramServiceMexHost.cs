@@ -1,30 +1,47 @@
-﻿using DynamicEndpointUtils;
+﻿using V37ZEN.DynamicEndpointUtils;
 using System;
 using System.ServiceModel;
 using System.ServiceModel.Description;
 
 namespace V37ZEN.DatagramService.Host
 {
-    class DatagramServiceMexHost :IDisposable
+    public class DatagramServiceMexHost : IDisposable
     {
-        private ServiceHost host;
+        private ServiceHost Host;
+        private Uri _address;
 
-        public Uri Address { get; set; }
+        public Uri Address {
+            get { return _address; }
+            internal set { _address = value; }
+        }
 
-        public ServiceMetadataBehavior getServiceMetadataBehavior()
+        public DatagramServiceMexHost(Uri address)
         {
-            return ServiceMetadataBehaviorUtil.getServiceMetadataBehavior(this.Address);
+            Address = address;
+        }
+
+        public void ChangeAddress(Uri address)
+        {
+            Close();
+            Address = address;
+            Open();
         }
 
         public void Open()
         {
-            this.host = ServiceMetadataBehaviorUtil.DebugServiceHost(typeof(EchoDatagramService),this.Address);
-            this.host.Open();
+            Host = DebugServiceHost.GetDebugServiceHost(typeof(EchoDatagramService),
+                typeof(IDatagramService), Address);
+            Host.Open();
         }
 
         public void Close()
         {
-            this.host.Close();
+            Host.Close();
+        }
+
+        public ServiceMetadataBehavior GetServiceMetadataBehavior()
+        {
+            return Address.GetServiceMetadataBehavior();
         }
 
         #region Disposable
@@ -47,7 +64,7 @@ namespace V37ZEN.DatagramService.Host
             {
                 // Free any other managed objects here.
                 //
-                this.host.Close();
+                Host.Dispose();
             }
             // Free any unmanaged objects here.
             //

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="d27f2642-6458-4e42-b85a-e31a0a95cbc5" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:8085/datagram" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="datagram.xsd" MetadataType="Schema" ID="fab62584-cd8b-4d20-98aa-1ab592949a76" SourceId="1" SourceUrl="http://localhost:8085/datagram?xsd=xsd3" />
+    <MetadataFile FileName="datagram1.xsd" MetadataType="Schema" ID="ccfbd306-a0e7-45da-9467-9148da8bbc99" SourceId="1" SourceUrl="http://localhost:8085/datagram?xsd=xsd1" />
+    <MetadataFile FileName="datagram2.xsd" MetadataType="Schema" ID="2b7a1d48-5395-4332-855f-d0bfac42e66e" SourceId="1" SourceUrl="http://localhost:8085/datagram?xsd=xsd0" />
+    <MetadataFile FileName="datagram.disco" MetadataType="Disco" ID="a3c5f045-49d8-4bba-9496-ea09f00517fa" SourceId="1" SourceUrl="http://localhost:8085/datagram?disco" />
+    <MetadataFile FileName="EchoDatagramService.wsdl" MetadataType="Wsdl" ID="552e4f45-631f-4b00-bddf-b19f1302613e" SourceId="1" SourceUrl="http://localhost:8085/datagram?wsdl" />
+    <MetadataFile FileName="datagram3.xsd" MetadataType="Schema" ID="d63ed88f-7b50-454a-89ec-1fda5f593ce5" SourceId="1" SourceUrl="http://localhost:8085/datagram?xsd=xsd2" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

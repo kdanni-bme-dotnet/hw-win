@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using V37ZEN.DatagramService;
+using V37ZEN.DatagramService.Host;
 
 namespace DebugHost
 {
@@ -31,13 +32,33 @@ namespace DebugHost
                 Timestamp = DateTime.UtcNow
             };
             Console.WriteLine();
+            Console.WriteLine(d2.ToString());
             #endregion
 
+            using (var host = new DatagramServiceMexHost(new Uri("http://localhost:8085/datagram")))
+            {
+                host.Open();
+                Console.WriteLine("Datagram Service is ready.");
+                Console.WriteLine(host.Address);
+
+                Console.ReadLine();
+
+
+                host.ChangeAddress(new Uri("http://localhost:8085/test"));
+                Console.WriteLine("Datagram Service is rehosted.");
+                Console.WriteLine(host.Address);
+
+                Console.ReadLine();
+            }
+
+            Console.WriteLine("Datagram Service closed.");
 
 
 
-            Console.WriteLine(d2.ToString());
+
+            #region termination_protection
             Console.ReadKey();
+            #endregion
         }
     }
 }

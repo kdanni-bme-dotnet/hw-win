@@ -7,7 +7,7 @@
     <ProjectGuid>{3075BAFE-7292-4F90-9612-932CC98E3AF3}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>DynamicEndpointUtils</RootNamespace>
+    <RootNamespace>V37ZEN.DynamicEndpointUtils</RootNamespace>
     <AssemblyName>DynamicEndpointUtils</AssemblyName>
     <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -33,9 +33,12 @@
     <Reference Include="System" />
     <Reference Include="System.ServiceModel" />
     <Reference Include="System.ServiceModel.Channels" />
+    <Reference Include="System.ServiceModel.Discovery" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ServiceMetadataBehaviorUtil.cs" />
+    <Compile Include="Debug\DebugServiceHost.cs" />
+    <Compile Include="ExtensionMethodes\DisposeCommunicationObject.cs" />
+    <Compile Include="ExtensionMethodes\BehaviorUtil.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
