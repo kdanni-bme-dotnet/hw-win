@@ -48,9 +48,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Datagram.cs" />
-    <Compile Include="EchoDatagramService.cs" />
+    <Compile Include="Host\DatagramServiceMexHost.cs" />
+    <Compile Include="Implementations\EchoDatagramService.cs" />
     <Compile Include="IDatagramService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DynamicEndpointUtils\DynamicEndpointUtils.csproj">
+      <Project>{3075bafe-7292-4f90-9612-932cc98e3af3}</Project>
+      <Name>DynamicEndpointUtils</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
