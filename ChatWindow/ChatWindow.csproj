@@ -74,11 +74,13 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Controler\MeshLogic.cs" />
     <Compile Include="Models\Chatter.cs" />
     <Compile Include="Models\ChatterList.cs" />
     <Compile Include="Models\Mesh.cs" />
     <Compile Include="Models\Message.cs" />
     <Compile Include="Models\Peer.cs" />
+    <Compile Include="ViewModels\ChatViewModel.cs" />
     <Compile Include="Views\ChatControl.xaml.cs">
       <DependentUpon>ChatControl.xaml</DependentUpon>
     </Compile>
@@ -115,7 +117,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Commands\" />
-    <Folder Include="ViewModels\" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.6">

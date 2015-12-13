@@ -12,7 +12,7 @@ namespace ChatWindow.Models
         public readonly ObservableCollection<Peer> ObservablePeerList =
             new ObservableCollection<Peer>();
 
-
+        public readonly Peer Self = new Peer {};
 
     }
 }

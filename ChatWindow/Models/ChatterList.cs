@@ -9,9 +9,18 @@ namespace ChatWindow.Models
 {
     class ChatterList
     {
-        public static readonly ObservableCollection<Chatter> ObservableChatterList =
+        public readonly ObservableCollection<Chatter> ObservableChatterList =
             new ObservableCollection<Chatter>();
 
+        public readonly Chatter Self = new Chatter
+        {
+            Nick = Chatter.Anonymous,
+            ThisIsMe = true
+        };
 
+        public ChatterList()
+        {
+            ObservableChatterList.Add(Self);
+        }
     }
 }

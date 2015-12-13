@@ -1,4 +1,5 @@
-﻿using ChatWindow.Views;
+﻿using ChatWindow.ViewModels;
+using ChatWindow.Views;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -18,12 +19,11 @@ namespace ChatWindow
         protected override void OnStartup(StartupEventArgs e)
         {
             var view = new MainView();
-
-            
+            var viewmodel = new ChatViewModel();
+            view.DataContext = viewmodel;
 
             view.Show();
-
-            
+                        
         }
     }
 }
