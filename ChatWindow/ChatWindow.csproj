@@ -52,6 +52,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -74,12 +75,12 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Commands\EventToCommand.cs" />
+    <Compile Include="Commands\RelayCommand.cs" />
     <Compile Include="Controler\MeshLogic.cs" />
     <Compile Include="Models\Chatter.cs" />
-    <Compile Include="Models\ChatterList.cs" />
     <Compile Include="Models\Mesh.cs" />
     <Compile Include="Models\Message.cs" />
-    <Compile Include="Models\MessageFlow.cs" />
     <Compile Include="Models\Peer.cs" />
     <Compile Include="ViewModels\ChatViewModel.cs" />
     <Compile Include="Views\ChatControl.xaml.cs">
@@ -116,9 +117,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Commands\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.6">
       <Visible>False</Visible>

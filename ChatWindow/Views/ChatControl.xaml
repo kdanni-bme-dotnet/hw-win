@@ -4,8 +4,9 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:ChatWindow.Views"
+             xmlns:scm="clr-namespace:System.ComponentModel;assembly=WindowsBase"
              mc:Ignorable="d" 
-             d:DesignHeight="400" d:DesignWidth="560">
+             d:DesignHeight="400" d:DesignWidth="680">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
@@ -18,10 +19,35 @@
             </Grid.ColumnDefinitions>
             
             <ScrollViewer>
-                <ListView />
+                <ListView Name="messageFlowListView" 
+                          ItemsSource="{Binding Path=MessageFlow}">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock>
+                                <TextBlock Text="[" />
+                                <TextBlock Text="{Binding Path=Timestamp, StringFormat={}{0:HH\:mm\:ss(UTC)}}" />
+                                <TextBlock Text="] " />
+                                <TextBlock Text="{Binding Path=Chatter.Nick}" FontWeight="Bold" MinWidth="40" MaxWidth="100"/>
+                                <TextBlock Text=" - " />
+                                <TextBlock Text="{Binding Path=TextMessage}" />                    
+                            </TextBlock>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
             </ScrollViewer>
             <ScrollViewer Grid.Column="1">
-                <ListView/>
+                <ListView Name="chatterListView" 
+                          ItemsSource="{Binding Path=ChatterList}">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock>
+                                <TextBlock Text="*" Foreground="ForestGreen"  Visibility="{Binding Path=ThisIsMe}"/>
+                                <TextBlock Text="{Binding Path=Nick}" />                    
+                                <TextBlock Text="*" Foreground="ForestGreen" Visibility="{Binding Path=ThisIsMe}"/>
+                            </TextBlock>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
             </ScrollViewer>
         </Grid>
         <Grid  Grid.Row="1">
@@ -30,8 +56,8 @@
                 <ColumnDefinition Width="1*" />
             </Grid.ColumnDefinitions>
 
-            <TextBlock/>
-            <Button Grid.Column="1" Content="Send" />
+            <TextBox Name="messageTextBox" Margin="5" Padding="5 5 5 0"/>
+            <Button Name="messageSubmitButton" Grid.Column="1" Content="Send" Margin="5" />
         </Grid>
     </Grid>
 </UserControl>

@@ -22,7 +22,7 @@ namespace ChatWindow.Logic
             ChatViewModel = chatViewModel;
             Mesh = new Mesh();
 
-            Mesh.Self.Chatter = ChatViewModel.ChatterList.Self;
+            Mesh.Self.Chatter = ChatViewModel.Self;
             Mesh.Self.MAC_Hash = generateMAC_Hash();
 
         }
