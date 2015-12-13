@@ -18,6 +18,14 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DebugClient", "DebugClient\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPFClient", "WPFClient\WPFClient.csproj", "{ED28512A-63D7-4D65-AC61-689EDA2277A9}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DotNetLab", "DotNetLab", "{7742904D-3B96-4064-99EB-C9872D0EFC97}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lab_WPF_ControlExample", "Lab_WPF_ControlExample\Lab_WPF_ControlExample.csproj", "{2CC595BB-1D19-4BA2-B851-A67876E5F22E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChatWindow", "ChatWindow\ChatWindow.csproj", "{C37AD249-A48E-4BB8-A9A0-8081A9DA1E4B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DebugGeneral", "DebugGeneral\DebugGeneral.csproj", "{19CD31EB-8165-4FFC-B908-948E82BB33EB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -44,8 +52,23 @@ Global
 		{ED28512A-63D7-4D65-AC61-689EDA2277A9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ED28512A-63D7-4D65-AC61-689EDA2277A9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{ED28512A-63D7-4D65-AC61-689EDA2277A9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2CC595BB-1D19-4BA2-B851-A67876E5F22E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2CC595BB-1D19-4BA2-B851-A67876E5F22E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2CC595BB-1D19-4BA2-B851-A67876E5F22E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2CC595BB-1D19-4BA2-B851-A67876E5F22E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C37AD249-A48E-4BB8-A9A0-8081A9DA1E4B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C37AD249-A48E-4BB8-A9A0-8081A9DA1E4B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C37AD249-A48E-4BB8-A9A0-8081A9DA1E4B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C37AD249-A48E-4BB8-A9A0-8081A9DA1E4B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{19CD31EB-8165-4FFC-B908-948E82BB33EB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{19CD31EB-8165-4FFC-B908-948E82BB33EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{19CD31EB-8165-4FFC-B908-948E82BB33EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{19CD31EB-8165-4FFC-B908-948E82BB33EB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{2CC595BB-1D19-4BA2-B851-A67876E5F22E} = {7742904D-3B96-4064-99EB-C9872D0EFC97}
 	EndGlobalSection
 EndGlobal
