@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ChatWindow.Views;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
@@ -13,5 +14,16 @@ namespace ChatWindow
     /// </summary>
     public partial class App : Application
     {
+
+        protected override void OnStartup(StartupEventArgs e)
+        {
+            var view = new MainView();
+
+            
+
+            view.Show();
+
+            
+        }
     }
 }
