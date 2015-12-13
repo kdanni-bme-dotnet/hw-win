@@ -15,10 +15,17 @@ namespace ChatWindow.ViewModels
 
         public MeshLogic MeshLogic { get; set; }
 
+        public MessageFlow MessageFlow { get; set; }
+
         public ChatViewModel()
         {
             ChatterList = new ChatterList();
             MeshLogic = new MeshLogic(this);
+            MessageFlow = new MessageFlow();
+
+            foreach (Message m in GetWelcomeMessage()) { 
+                MessageFlow.ObservableMessageFlow.Add(m);
+            }
         }
 
         public List<Message> GetWelcomeMessage()

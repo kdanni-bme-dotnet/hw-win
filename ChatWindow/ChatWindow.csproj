@@ -79,6 +79,7 @@
     <Compile Include="Models\ChatterList.cs" />
     <Compile Include="Models\Mesh.cs" />
     <Compile Include="Models\Message.cs" />
+    <Compile Include="Models\MessageFlow.cs" />
     <Compile Include="Models\Peer.cs" />
     <Compile Include="ViewModels\ChatViewModel.cs" />
     <Compile Include="Views\ChatControl.xaml.cs">
