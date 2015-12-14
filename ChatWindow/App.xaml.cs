@@ -26,10 +26,7 @@ namespace ChatWindow
             view.Show();
             viewmodel.IsReady = true;
                        
-            foreach (var m in viewmodel.MessageFlow)
-            {
-                Debug.WriteLine("[{0}] {1} - {2}", m.Timestamp.ToString(), m.Chatter.Nick, m.TextMessage);
-            } 
+            
         }
     }
 }

@@ -21,6 +21,6 @@ namespace ChatWindow.Models
 
         public MessageType Type { get; set; }
 
-        public DateTime Timestamp { get; set; }
+        public DateTime Timestamp { get; set; } = DateTime.UtcNow;
     }
 }

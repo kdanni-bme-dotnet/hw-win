@@ -1,15 +1,19 @@
 ﻿using ChatWindow.Logic;
 using ChatWindow.Models;
+using MVVMExample.Commands;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 
 namespace ChatWindow.ViewModels
 {
-    class ChatViewModel
+    class ChatViewModel : INotifyPropertyChanged
     {
 
         public bool IsReady { get; set; }
@@ -20,17 +24,12 @@ namespace ChatWindow.ViewModels
 
         public ObservableCollection<Message> MessageFlow { get; set; }
 
-        public readonly Chatter Self = new Chatter
-        {
-            Nick = Chatter.Anonymous,
-            ThisIsMe = true
-        };
+        private string _text;
+        public string MessageText { get { return _text; } set { _text = value; OnPropertyChanged(); }}
 
-        public readonly Chatter Application = new Chatter
-        {
-            Nick = "",
-            ThisIsMe = false
-        };
+        public readonly Chatter Self = new Chatter { Nick = Chatter.Anonymous, ThisIsMe = true };
+
+        public readonly Chatter Application = new Chatter { Nick = "", ThisIsMe = false };
 
         public ChatViewModel()
         {
@@ -39,32 +38,71 @@ namespace ChatWindow.ViewModels
             
             ChatterList.Add(Self);
             MeshLogic = new MeshLogic(this);
+            MeshLogic.startupAsync();
 
+            MessageText = "";
             foreach (Message m in GetWelcomeMessage()) { 
                 MessageFlow.Add(m);
             }
         }
 
-        public bool CanSend()
+        #region sendCommand
+        private RelayCommand _sendCommand;
+
+        public ICommand SendCommand
+        {
+            get
+            {
+                if(_sendCommand == null)
+                {
+                    _sendCommand = new RelayCommand(
+                        l => SendMessage(), l => CanSend());
+                }
+                return _sendCommand;
+            }
+        }
+
+        private bool CanSend()
         {
             return IsReady;
         }
+        #endregion
 
-        public void SendMessage(String text)
+        private void SendMessage()
         {
-            var m = new Message()
+            if (MessageText != null && MessageText.StartsWith("/"))
             {
-                Chatter = Self,
-                TextMessage = text,
-                Timestamp = DateTime.UtcNow,    
-                Type = MessageType.Public
-            };
+                HandleChatCommand();
+            }
+            else
+            {
+                var m = new Message()
+                {
+                    Chatter = Self,
+                    TextMessage = MessageText,
+                    Timestamp = DateTime.UtcNow,
+                    Type = MessageType.Public
+                };
 
-            this.MessageFlow.Add(m);
-
-
+                this.MessageFlow.Add(m);
+            }
+            MessageText = "";
         }
 
+        private void HandleChatCommand()
+        {
+            if ("/help".Equals(MessageText))
+            {
+                foreach (Message m in GetHelpMessage())
+                {
+                    MessageFlow.Add(m);
+                }
+                return;
+                    
+            }
+        }
+
+        #region messages
         public List<Message> GetWelcomeMessage()
         {
             var theList = new List<Message>();
@@ -89,6 +127,34 @@ namespace ChatWindow.ViewModels
 
 
             return theList;
+        }
+
+        public List<Message> GetHelpMessage()
+        {
+            var theList = new List<Message>();
+
+            theList.Add(
+                new Message
+                {
+                    Chatter = Application,
+                    Timestamp = DateTime.UtcNow,
+                    TextMessage = "Type /help for help.",
+                    Type = MessageType.Meta
+                });
+
+            return theList;
+        }
+        #endregion
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        protected void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            var handler = PropertyChanged;
+            if (handler != null)
+            {
+                handler(this, new PropertyChangedEventArgs(propertyName));
+            }
         }
     }
 }
