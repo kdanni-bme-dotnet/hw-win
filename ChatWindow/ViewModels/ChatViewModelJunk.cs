@@ -22,6 +22,18 @@ namespace ChatWindow.ViewModels
         }
 
         #region messages
+        protected void ApplicationMessage(string _message)
+        {
+            MessageFlow.Add(
+                new Message
+                {
+                    Chatter = Application,
+                    Timestamp = DateTime.UtcNow,
+                    TextMessage = _message,
+                    Type = MessageType.Meta
+                });
+        }
+
         public List<Message> GetWelcomeMessage()
         {
             var theList = new List<Message>();
@@ -100,6 +112,30 @@ namespace ChatWindow.ViewModels
         private bool CanSend()
         {
             return IsReady;
+        }
+        #endregion
+
+        #region historyCommand
+        private RelayCommand _historyCommand;
+
+        private string _history;
+
+        public ICommand HistoryCommand
+        {
+            get
+            {
+                if (_historyCommand == null)
+                {
+                    _historyCommand = new RelayCommand(
+                        l => History(), l => HasHistory());
+                }
+                return _historyCommand;
+            }
+        }
+
+        private bool HasHistory()
+        {
+            return (_history != null && !"".Equals(_history.Trim()));
         }
         #endregion
 

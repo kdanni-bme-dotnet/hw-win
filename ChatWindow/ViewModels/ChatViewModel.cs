@@ -38,6 +38,12 @@ namespace ChatWindow.ViewModels
             }
         }
 
+        private void History()
+        {
+            MessageText = (_history==null)?"":_history;
+            _history = null;
+        }
+
         private void Help()
         {
             foreach (Message m in GetHelpMessage())
@@ -80,16 +86,10 @@ namespace ChatWindow.ViewModels
                 EasyAccess();
                 return;
             }
-            MessageFlow.Add(
-                new Message
-                {
-                    Chatter = Application,
-                    Timestamp = DateTime.UtcNow,
-                    TextMessage = "No " + MessageText + " command found!",
-                    Type = MessageType.Meta
-                });
+            ApplicationMessage("No " + MessageText + " command found!");
+            ApplicationMessage("Type /help for help.");
         }
-        
+
         private void SendMessage()
         {
             if (MessageText != null && MessageText.StartsWith("/"))
@@ -108,6 +108,7 @@ namespace ChatWindow.ViewModels
 
                 this.MessageFlow.Add(m);
             }
+            _history = MessageText;
             MessageText = "";
         }
     }

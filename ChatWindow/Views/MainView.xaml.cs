@@ -1,5 +1,8 @@
-﻿using System;
+﻿using ChatWindow.ViewModels;
+using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,6 +25,28 @@ namespace ChatWindow.Views
         public MainView()
         {
             InitializeComponent();
+        }
+
+        private void ChatControl_DataContextChanged(object sender, DependencyPropertyChangedEventArgs e)
+        {
+            try
+            {
+                var viewModel = (ChatViewModel)DataContext;
+
+                viewModel.MessageFlow.CollectionChanged +=
+                    new NotifyCollectionChangedEventHandler(MessageFlowChanged);
+
+            }
+            catch (Exception ex)
+            {
+                //No auto scroll if something wrong, but it's not fatal.
+                Debug.WriteLine(ex);
+            }
+        }
+
+        private void MessageFlowChanged(object sender, NotifyCollectionChangedEventArgs e)
+        {
+            ChatControl.MessageFlowChanged();
         }
     }
 }

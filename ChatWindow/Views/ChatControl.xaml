@@ -4,10 +4,39 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:ChatWindow.Views"
+             xmlns:m="clr-namespace:ChatWindow.Models"
              xmlns:scm="clr-namespace:System.ComponentModel;assembly=WindowsBase"
              mc:Ignorable="d" 
              d:DesignHeight="400" d:DesignWidth="680">
-    <Grid>
+
+    <UserControl.Resources>
+        <!-- In your resources section of the XAML -->
+        <BooleanToVisibilityConverter x:Key="BoolToVis" />
+
+        <DataTemplate DataType="{x:Type m:Message}">
+            <TextBlock>
+                <TextBlock Text="[" />
+                <TextBlock Text="{Binding Path=Timestamp, StringFormat={}{0:HH\:mm\:ss(UTC)}}" />
+                <TextBlock Text="] " />
+                <TextBlock Text="*" Foreground="ForestGreen"  Visibility="{Binding Path=Chatter.ThisIsMe , Converter={StaticResource BoolToVis}}"/>
+                <TextBlock Text="{Binding Path=Chatter.Nick}" FontWeight="Bold" MaxWidth="100"/>
+                <TextBlock Text="*" Foreground="ForestGreen"  Visibility="{Binding Path=Chatter.ThisIsMe , Converter={StaticResource BoolToVis}}"/>
+                <TextBlock Text=" - " />
+                <TextBlock Text="{Binding Path=TextMessage}" />                    
+            </TextBlock>
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type m:Chatter}">
+            <TextBlock>
+                <TextBlock Text="*" Foreground="ForestGreen"  Visibility="{Binding Path=ThisIsMe, Converter={StaticResource BoolToVis}}"/>
+                <TextBlock Text="{Binding Path=Nick}" />                    
+                <TextBlock Text="*" Foreground="ForestGreen" Visibility="{Binding Path=ThisIsMe, Converter={StaticResource BoolToVis}}"/>
+            </TextBlock>
+        </DataTemplate>
+
+    </UserControl.Resources>
+
+    <Grid FocusManager.FocusedElement="{Binding ElementName=messageTextBox}">
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
             <RowDefinition Height="40" />
@@ -17,36 +46,15 @@
                 <ColumnDefinition Width="3*" />
                 <ColumnDefinition Width="1*" />
             </Grid.ColumnDefinitions>
-            
-            <ScrollViewer>
-                <ListView Name="messageFlowListView" 
+
+            <ScrollViewer Name="messageFlowScroll" >
+                <ListView Name="messageFlowListView"
                           ItemsSource="{Binding Path=MessageFlow}">
-                    <ListView.ItemTemplate>
-                        <DataTemplate>
-                            <TextBlock>
-                                <TextBlock Text="[" />
-                                <TextBlock Text="{Binding Path=Timestamp, StringFormat={}{0:HH\:mm\:ss(UTC)}}" />
-                                <TextBlock Text="] " />
-                                <TextBlock Text="{Binding Path=Chatter.Nick}" FontWeight="Bold" MaxWidth="100"/>
-                                <TextBlock Text=" - " />
-                                <TextBlock Text="{Binding Path=TextMessage}" />                    
-                            </TextBlock>
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
                 </ListView>
             </ScrollViewer>
             <ScrollViewer Grid.Column="1">
                 <ListView Name="chatterListView" 
                           ItemsSource="{Binding Path=ChatterList}">
-                    <ListView.ItemTemplate>
-                        <DataTemplate>
-                            <TextBlock>
-                                <TextBlock Text="*" Foreground="ForestGreen"  Visibility="{Binding Path=ThisIsMe}"/>
-                                <TextBlock Text="{Binding Path=Nick}" />                    
-                                <TextBlock Text="*" Foreground="ForestGreen" Visibility="{Binding Path=ThisIsMe}"/>
-                            </TextBlock>
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
                 </ListView>
             </ScrollViewer>
         </Grid>
@@ -60,6 +68,7 @@
                      Text="{Binding Path=MessageText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" >
                 <TextBox.InputBindings>
                     <KeyBinding Key="Enter" Command="{Binding Path=SendCommand}"/>
+                    <KeyBinding Key="Up" Command="{Binding Path=HistoryCommand}"/>
                 </TextBox.InputBindings>
             </TextBox>
 
