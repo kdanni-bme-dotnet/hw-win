@@ -9,6 +9,7 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 
 namespace ChatWindow.ViewModels
@@ -27,6 +28,10 @@ namespace ChatWindow.ViewModels
         private string _text;
         public string MessageText { get { return _text; } set { _text = value; OnPropertyChanged(); }}
 
+        private GridLength _sendbuttonWidth;
+        public GridLength SendbuttonWidth { get { return _sendbuttonWidth; }
+            set { _sendbuttonWidth = value; OnPropertyChanged(); }}
+
         public readonly Chatter Self = new Chatter { Nick = Chatter.Anonymous, ThisIsMe = true };
 
         public readonly Chatter Application = new Chatter { Nick = "", ThisIsMe = false };
@@ -41,6 +46,7 @@ namespace ChatWindow.ViewModels
             MeshLogic.startupAsync();
 
             MessageText = "";
+            SendbuttonWidth = new GridLength(0, GridUnitType.Star);
             foreach (Message m in GetWelcomeMessage()) { 
                 MessageFlow.Add(m);
             }
@@ -100,6 +106,16 @@ namespace ChatWindow.ViewModels
                 return;
                     
             }
+            if ("/ea".Equals(MessageText))
+            {
+                if(SendbuttonWidth.Value == 0)
+                {
+                    SendbuttonWidth = new GridLength(1, GridUnitType.Star);
+                } else
+                {
+                    SendbuttonWidth = new GridLength(0, GridUnitType.Star);
+                }
+            }
         }
 
         #region messages
@@ -138,7 +154,15 @@ namespace ChatWindow.ViewModels
                 {
                     Chatter = Application,
                     Timestamp = DateTime.UtcNow,
-                    TextMessage = "Type /help for help.",
+                    TextMessage = "/help\tDisplay this help.",
+                    Type = MessageType.Meta
+                });
+            theList.Add(
+                new Message
+                {
+                    Chatter = Application,
+                    Timestamp = DateTime.UtcNow,
+                    TextMessage = "/ea\tEasy access.",
                     Type = MessageType.Meta
                 });
 
