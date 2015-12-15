@@ -12,7 +12,7 @@ using System.Windows.Input;
 
 namespace ChatWindow.ViewModels
 {
-    partial class ChatViewModel
+    public partial class ChatViewModel
     {
         public bool IsReady { get; set; }
 

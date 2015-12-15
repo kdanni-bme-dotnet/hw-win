@@ -7,7 +7,7 @@ using System.Windows;
 
 namespace ChatWindow.ViewModels
 {
-    partial class ChatViewModel : INotifyPropertyChanged
+    public partial class ChatViewModel : INotifyPropertyChanged
     {
 
         public ObservableCollection<Chatter> ChatterList { get; set; }

@@ -29,6 +29,7 @@
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
+    <WcfConfigValidationEnabled>True</WcfConfigValidationEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -51,9 +52,12 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.ServiceModel" />
+    <Reference Include="System.ServiceModel.Channels" />
+    <Reference Include="System.ServiceModel.Discovery" />
     <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
@@ -77,13 +81,19 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="ChatService\ChatService.cs" />
+    <Compile Include="ChatService\IChatService.cs" />
     <Compile Include="Commands\EventToCommand.cs" />
     <Compile Include="Commands\RelayCommand.cs" />
     <Compile Include="Controler\MeshLogic.cs" />
     <Compile Include="Models\Chatter.cs" />
-    <Compile Include="Models\Mesh.cs" />
     <Compile Include="Models\Message.cs" />
     <Compile Include="Models\Peer.cs" />
+    <Compile Include="Service References\ChatServiceClient\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Service References\MemoServiceReference\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -132,6 +142,13 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <AppDesigner Include="Properties\" />
+    <None Include="Service References\ChatServiceClient\ChatService.wsdl" />
+    <None Include="Service References\ChatServiceClient\item.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ChatServiceClient\item1.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Service References\MemoServiceReference\ChatWindow.MemoServiceReference.MemoData.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
@@ -192,6 +209,7 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <WCFMetadataStorage Include="Service References\ChatServiceClient\" />
     <WCFMetadataStorage Include="Service References\MemoServiceReference\" />
     <WCFMetadataStorage Include="Service References\NickServiceReference\" />
     <WCFMetadataStorage Include="Service References\PeerServiceReference\" />
@@ -233,7 +251,19 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="ChatService\" />
+    <None Include="Service References\ChatServiceClient\item.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ChatServiceClient\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ChatServiceClient\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ChatServiceClient\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
