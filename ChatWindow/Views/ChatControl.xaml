@@ -27,7 +27,7 @@
                                 <TextBlock Text="[" />
                                 <TextBlock Text="{Binding Path=Timestamp, StringFormat={}{0:HH\:mm\:ss(UTC)}}" />
                                 <TextBlock Text="] " />
-                                <TextBlock Text="{Binding Path=Chatter.Nick}" FontWeight="Bold" MinWidth="10" MaxWidth="100"/>
+                                <TextBlock Text="{Binding Path=Chatter.Nick}" FontWeight="Bold" MaxWidth="100"/>
                                 <TextBlock Text=" - " />
                                 <TextBlock Text="{Binding Path=TextMessage}" />                    
                             </TextBlock>
