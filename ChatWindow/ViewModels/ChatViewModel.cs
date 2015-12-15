@@ -10,17 +10,9 @@ namespace ChatWindow.ViewModels
     partial class ChatViewModel : INotifyPropertyChanged
     {
 
-        public bool IsReady { get; set; }
-
-        public MeshLogic MeshLogic { get; set; }
-
         public ObservableCollection<Chatter> ChatterList { get; set; }
 
         public ObservableCollection<Message> MessageFlow { get; set; }
-
-        public readonly Chatter Self = new Chatter { Nick = Chatter.Anonymous, ThisIsMe = true };
-
-        public readonly Chatter Application = new Chatter { Nick = "", ThisIsMe = false };
 
         public ChatViewModel()
         {
@@ -102,7 +94,7 @@ namespace ChatWindow.ViewModels
                 {
                     Chatter = Self,
                     TextMessage = MessageText,
-                    Timestamp = DateTime.UtcNow,
+                    UtcTimestamp = DateTime.UtcNow,
                     Type = MessageType.Public
                 };
 

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace ChatWindow.Models
 {
 
-    class Peer
+    public class Peer
     {
         public string MAC_Hash { get; set; }
 

@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:ChatWindow.Views"
+             xmlns:vm="clr-namespace:ChatWindow.ViewModels"
              xmlns:m="clr-namespace:ChatWindow.Models"
              xmlns:scm="clr-namespace:System.ComponentModel;assembly=WindowsBase"
              mc:Ignorable="d" 
@@ -16,7 +17,7 @@
         <DataTemplate DataType="{x:Type m:Message}">
             <TextBlock>
                 <TextBlock Text="[" />
-                <TextBlock Text="{Binding Path=Timestamp, StringFormat={}{0:HH\:mm\:ss(UTC)}}" />
+                <TextBlock Text="{Binding Path=LocalTimestamp, StringFormat={}{0:HH\:mm\:ss}}" />
                 <TextBlock Text="] " />
                 <TextBlock Text="*" Foreground="ForestGreen"  Visibility="{Binding Path=Chatter.ThisIsMe , Converter={StaticResource BoolToVis}}"/>
                 <TextBlock Text="{Binding Path=Chatter.Nick}" FontWeight="Bold" MaxWidth="100"/>
@@ -36,7 +37,8 @@
 
     </UserControl.Resources>
 
-    <Grid FocusManager.FocusedElement="{Binding ElementName=messageTextBox}">
+    <Grid Name="mainChatGrid"
+        FocusManager.FocusedElement="{Binding ElementName=messageTextBox}">
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
             <RowDefinition Height="40" />

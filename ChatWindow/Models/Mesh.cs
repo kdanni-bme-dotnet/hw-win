@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ChatWindow.Models
 {
-    class Mesh
+    public class Mesh
     {
         public readonly ObservableCollection<Peer> ObservablePeerList =
             new ObservableCollection<Peer>();

@@ -6,14 +6,14 @@ using System.Threading.Tasks;
 
 namespace ChatWindow.Models
 {
-    enum MessageType
+    public enum MessageType
     {
         Public,
         Private,
         Meta
     }
 
-    class Message
+    public class Message
     {
         public Chatter Chatter { get; set; }
 
@@ -21,6 +21,8 @@ namespace ChatWindow.Models
 
         public MessageType Type { get; set; }
 
-        public DateTime Timestamp { get; set; } = DateTime.UtcNow;
+        public DateTime UtcTimestamp { get; set; } = DateTime.UtcNow;
+
+        public DateTime LocalTimestamp { get { return UtcTimestamp.ToLocalTime(); } }
     }
 }

@@ -1,18 +1,41 @@
-﻿using ChatWindow.Models;
+﻿using ChatWindow.Logic;
+using ChatWindow.Models;
 using MVVMExample.Commands;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Globalization;
 using System.Runtime.CompilerServices;
 using System.Windows;
+using System.Windows.Data;
 using System.Windows.Input;
 
 namespace ChatWindow.ViewModels
 {
     partial class ChatViewModel
     {
+        public bool IsReady { get; set; }
+
+        public MeshLogic MeshLogic { get; set; }
+
+        public readonly Chatter Self = new Chatter
+        {
+            Nick = Chatter.Anonymous,
+            ThisIsMe = true
+        };
+
+        public readonly Chatter Application = new Chatter
+        {
+            Nick = "",
+            ThisIsMe = false
+        };
+
         private string _text;
-        public string MessageText { get { return _text; } set { _text = value; OnPropertyChanged(); } }
+        public string MessageText
+        {
+            get { return _text; }
+            set { _text = value; OnPropertyChanged(); }
+        }
 
         private GridLength _sendbuttonWidth;
         public GridLength SendbuttonWidth
@@ -28,7 +51,7 @@ namespace ChatWindow.ViewModels
                 new Message
                 {
                     Chatter = Application,
-                    Timestamp = DateTime.UtcNow,
+                    UtcTimestamp = DateTime.UtcNow,
                     TextMessage = _message,
                     Type = MessageType.Meta
                 });
@@ -42,7 +65,7 @@ namespace ChatWindow.ViewModels
                 new Message
                 {
                     Chatter = Application,
-                    Timestamp = DateTime.UtcNow,
+                    UtcTimestamp = DateTime.UtcNow,
                     TextMessage = "Welcome " + Self.Nick + "!",
                     Type = MessageType.Meta
                 });
@@ -51,7 +74,7 @@ namespace ChatWindow.ViewModels
                 new Message
                 {
                     Chatter = Application,
-                    Timestamp = DateTime.UtcNow,
+                    UtcTimestamp = DateTime.UtcNow,
                     TextMessage = "Type /help for help.",
                     Type = MessageType.Meta
                 });
@@ -68,7 +91,7 @@ namespace ChatWindow.ViewModels
                 new Message
                 {
                     Chatter = Application,
-                    Timestamp = DateTime.UtcNow,
+                    UtcTimestamp = DateTime.UtcNow,
                     TextMessage = "/help\tDisplay this help.",
                     Type = MessageType.Meta
                 });
@@ -76,7 +99,7 @@ namespace ChatWindow.ViewModels
                 new Message
                 {
                     Chatter = Application,
-                    Timestamp = DateTime.UtcNow,
+                    UtcTimestamp = DateTime.UtcNow,
                     TextMessage = "/exit\tClose the application.",
                     Type = MessageType.Meta
                 });
@@ -84,7 +107,7 @@ namespace ChatWindow.ViewModels
                 new Message
                 {
                     Chatter = Application,
-                    Timestamp = DateTime.UtcNow,
+                    UtcTimestamp = DateTime.UtcNow,
                     TextMessage = "/ea\tEasy access.",
                     Type = MessageType.Meta
                 });

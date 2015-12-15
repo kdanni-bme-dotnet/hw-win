@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ChatWindow.Models
 {
-    class Chatter
+    public class Chatter
     {
         public static readonly string Anonymous = "Anonymous";
         
