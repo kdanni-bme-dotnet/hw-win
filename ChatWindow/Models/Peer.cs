@@ -13,6 +13,14 @@ namespace ChatWindow.Models
 
         public Uri Address { get; set; }
 
+        public Uri UdpAddress
+        {
+            get
+            {
+                return new Uri("soap.udp://" + Address.Authority + Address.PathAndQuery);
+            }
+        }
+
         public Chatter Chatter { get; set; }
 
     }

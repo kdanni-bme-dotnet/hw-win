@@ -9,11 +9,13 @@ using System.Runtime.CompilerServices;
 using System.Windows;
 using System.Windows.Data;
 using System.Windows.Input;
+using System.Windows.Threading;
 
 namespace ChatWindow.ViewModels
 {
     public partial class ChatViewModel
     {
+        private Dispatcher _dispatcher;
         public bool IsReady { get; set; }
 
         public MeshLogic MeshLogic { get; set; }
@@ -171,6 +173,17 @@ namespace ChatWindow.ViewModels
             {
                 handler(this, new PropertyChangedEventArgs(propertyName));
             }
+        }
+
+        public void InvokeDispatcher(Action action)
+        {
+            _dispatcher.Invoke(action);
+        }
+
+        public void ApplicationMessageInvokeDispatcher(string message)
+        {
+            Action action = () => ApplicationMessage(message);
+            _dispatcher.Invoke(action);
         }
     }
 }

@@ -4,6 +4,7 @@ using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Windows;
+using System.Windows.Threading;
 
 namespace ChatWindow.ViewModels
 {
@@ -28,6 +29,7 @@ namespace ChatWindow.ViewModels
             foreach (Message m in GetWelcomeMessage()) { 
                 MessageFlow.Add(m);
             }
+            _dispatcher = Dispatcher.CurrentDispatcher;
         }
 
         private void History()
@@ -102,6 +104,7 @@ namespace ChatWindow.ViewModels
             }
             _history = MessageText;
             MessageText = "";
+            MeshLogic.asyncSendPublicMessage(_history);
         }
     }
 }

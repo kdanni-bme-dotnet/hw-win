@@ -9,11 +9,6 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="HelloResponse">
-    <xs:complexType>
-      <xs:sequence />
-    </xs:complexType>
-  </xs:element>
   <xs:element name="Chat">
     <xs:complexType>
       <xs:sequence>
@@ -22,21 +17,11 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="ChatResponse">
-    <xs:complexType>
-      <xs:sequence />
-    </xs:complexType>
-  </xs:element>
   <xs:element name="Bye">
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="mac_hash" nillable="true" type="xs:string" />
       </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="ByeResponse">
-    <xs:complexType>
-      <xs:sequence />
     </xs:complexType>
   </xs:element>
 </xs:schema>

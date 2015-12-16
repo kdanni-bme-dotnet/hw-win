@@ -15,22 +15,22 @@ namespace ChatWindow.ChatServiceClient {
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ChatServiceClient.IChatService")]
     public interface IChatService {
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IChatService/Hello", ReplyAction="http://tempuri.org/IChatService/HelloResponse")]
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IChatService/Hello")]
         void Hello(System.Uri address, string nick, string mac_hash);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IChatService/Hello", ReplyAction="http://tempuri.org/IChatService/HelloResponse")]
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IChatService/Hello")]
         System.Threading.Tasks.Task HelloAsync(System.Uri address, string nick, string mac_hash);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IChatService/Chat", ReplyAction="http://tempuri.org/IChatService/ChatResponse")]
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IChatService/Chat")]
         void Chat(string message, string mac_hash);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IChatService/Chat", ReplyAction="http://tempuri.org/IChatService/ChatResponse")]
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IChatService/Chat")]
         System.Threading.Tasks.Task ChatAsync(string message, string mac_hash);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IChatService/Bye", ReplyAction="http://tempuri.org/IChatService/ByeResponse")]
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IChatService/Bye")]
         void Bye(string mac_hash);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IChatService/Bye", ReplyAction="http://tempuri.org/IChatService/ByeResponse")]
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IChatService/Bye")]
         System.Threading.Tasks.Task ByeAsync(string mac_hash);
     }
     

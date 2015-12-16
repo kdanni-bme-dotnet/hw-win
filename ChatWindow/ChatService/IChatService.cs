@@ -11,13 +11,13 @@ namespace ChatWindow.ChatService
     [ServiceContract]
     public interface IChatService
     {
-        [OperationContract]
+        [OperationContract(IsOneWay = true)]
         void Hello(Uri address, string nick, string mac_hash);
 
-        [OperationContract]
+        [OperationContract(IsOneWay = true)]
         void Chat(string message, string mac_hash);
 
-        [OperationContract]
+        [OperationContract(IsOneWay = true)]
         void Bye(string mac_hash);
 
     }
